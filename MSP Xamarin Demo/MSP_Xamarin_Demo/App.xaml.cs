@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MSP_Xamarin_Demo.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace MSP_Xamarin_Demo
         {
             InitializeComponent();
 
-            MainPage = new MSP_Xamarin_Demo.MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

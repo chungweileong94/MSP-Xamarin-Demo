@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MSP_Xamarin_Demo.Views.MainPage" Title="Bing Images">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Refresh" Command="{Binding LoadImagesCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <ListView x:Name="ImageListView" ItemsSource="{Binding BingImageCollection}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding Title}" FontSize="Medium" Margin="4"/>
+                            <Image Source="{Binding ImageUrl}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ActivityIndicator WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" IsRunning="{Binding IsLoading}"/>
+    </Grid>
+</ContentPage>
