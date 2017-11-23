@@ -38,7 +38,8 @@ MVVM (step)
 
 Performance Tips
 ==========================
-- Xamarin Form nuget package
+- Xamarin Form nuget package (latest version)
 - Xaml Compilation
 - Xamarin Form Android Fast Renderer
+- Layout Compression (Android & IOS)
 - ObservableRangeCollection
