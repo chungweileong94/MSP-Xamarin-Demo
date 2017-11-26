@@ -8,7 +8,14 @@
     </ContentPage.ToolbarItems>
 
     <Grid CompressedLayout.IsHeadless="True">
-        <ListView x:Name="ImageListView" ItemsSource="{Binding BingImageCollection}" HasUnevenRows="True">
+        <ListView 
+            x:Name="ImageListView" 
+            ItemsSource="{Binding BingImageCollection}"
+            IsPullToRefreshEnabled="True"
+            RefreshCommand="{Binding LoadImagesCommand}"
+            IsRefreshing="{Binding IsLoading}"
+            HasUnevenRows="True">
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
