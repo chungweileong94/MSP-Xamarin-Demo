@@ -9,6 +9,9 @@ namespace MSP_Xamarin_Demo.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        private static volatile MainViewModel _Instance;
+        private static object _SyncRoot = new object();
+
         public ObservableRangeCollection<BingImage> BingImageCollection { get; set; }
 
         private bool _IsLoading;
@@ -19,9 +22,26 @@ namespace MSP_Xamarin_Demo.ViewModels
             set { Set(ref _IsLoading, value); }
         }
 
-        public MainViewModel()
+        private MainViewModel()
         {
             BingImageCollection = new ObservableRangeCollection<BingImage>();
+        }
+
+        public static MainViewModel Instance
+        {
+            get
+            {
+                if (_Instance == null)
+                {
+                    lock (_SyncRoot)
+                    {
+                        if (_Instance == null)
+                            _Instance = new MainViewModel();
+                    }
+                }
+
+                return _Instance;
+            }
         }
 
         public async Task LoadImagesAsync()

@@ -13,7 +13,7 @@ namespace MSP_Xamarin_Demo.Views
         public MainPage()
         {
             InitializeComponent();
-            ViewModel = new MainViewModel();
+            ViewModel = MainViewModel.Instance;
             BindingContext = ViewModel;
 
             ImageListView.ItemSelected += delegate { ImageListView.SelectedItem = null; };
